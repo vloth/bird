@@ -1,4 +1,18 @@
-strange attractors created based on 3h wind forecast for a location
+strange attractors created based on 
+3h wind forecast for the given location
+
+### Setup
+```
+R
+> install.packages("ggplot2")
+> install.packages("owmr")
+> install.packages("dplyr")
+
+cp .Renviron.sample .Renviron
+# Add owm api key
+
+Rscript bird.R "New York"
+```
 
 ## São Paulo 2020-07-25 18:00:00
 ![sp](out/Sao_Paulo_2020-07-25_18_00_00.png)
