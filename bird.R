@@ -2,7 +2,7 @@ suppressPackageStartupMessages(library(dplyr))
 
 plot <- function(trajectory, name) {
   canvas = ggplot2::theme(legend.position  = "none",
-    panel.background = ggplot2::element_rect(fill="white"),
+    panel.background = ggplot2::element_rect(fill="black"),
     axis.ticks = ggplot2::element_blank(),
     panel.grid = ggplot2::element_blank(),
     axis.title = ggplot2::element_blank(),
@@ -12,7 +12,7 @@ plot <- function(trajectory, name) {
   str_path <- gsub(":", "_", gsub("~", "", str_path))
   png(str_path, units="px", width=1600, height=1600, res=200)
   ggplot2::ggplot(trajectory, ggplot2::aes(x, y)) +
-      ggplot2::geom_point(color="black", shape=46, alpha=.01) +
+      ggplot2::geom_point(color="white", shape=46, alpha=.01) +
    canvas
 }
 
