@@ -9,7 +9,7 @@ plot <- function(trajectory, name) {
     axis.text = ggplot2::element_blank())
 
   str_path <- gsub(" ", "_", paste("out/", iconv(name, from = 'UTF-8', to = 'ASCII//TRANSLIT'), ".png", sep=""))
-  str_path <- gsub(":", "_", gsub("~", "", str_path))
+  str_path <- gsub("'", "_", gsub(":", "_", gsub("~", "", str_path)))
   png(str_path, units="px", width=1600, height=1600, res=200)
   ggplot2::ggplot(trajectory, ggplot2::aes(x, y)) +
       ggplot2::geom_point(color="white", shape=46, alpha=.01) +
