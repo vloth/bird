@@ -29,6 +29,9 @@ Rscript bird.R "New York"
 ## Tokyo 2020-07-25 21:00:00
 ![Tokyo](out/Tokyo_2020-07-25_21_00_00.png)
 
+## Shanghai 2020-07-25 21:00:00
+![Shanghai](out/Shanghai_2020-07-25_21_00_00.png)
+
 ## Wellington 2020-07-25 21:00:00
 ![Wellington](out/Wellington_2020-07-25_21_00_00.png)
 
