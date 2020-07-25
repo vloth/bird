@@ -35,7 +35,7 @@ name <- tail(args, n=1)
 forecast <- owmr::get_forecast(name) %>% owmr::owmr_as_tibble()
 
 a = ((forecast $wind_speed %>% median) * -1) + 2.379
-b = ((forecast $wind_speed %>% max) - (forecast $wind_speed %>% min)) - 2.379
+b = ((forecast $wind_speed %>% max) - (forecast $wind_speed %>% min)) - 1.1579
 c = forecast $wind_speed %>% min
 d = ((forecast $wind_speed %>% median) * 1.2938) - 2.2389028
 

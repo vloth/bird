@@ -17,7 +17,7 @@ Rscript bird.R "New York"
 ## São Paulo 2020-07-25 18:00:00
 ![São Paulo](out/Sao_Paulo_2020-07-25_18_00_00.png)
 
-## Kabul
+## Kabul 2020-07-25 21:00:00
 ![Kabul](out/Kabul_2020-07-25_21_00_00.png)
 
 ## New York 2020-07-25 21:00:00
@@ -34,6 +34,9 @@ Rscript bird.R "New York"
 
 ## Wellington 2020-07-25 21:00:00
 ![Wellington](out/Wellington_2020-07-25_21_00_00.png)
+
+## Kingston 2020-07-25 18:00:00
+![Kingston](out/Kingston_2020-07-25_21_00_00.png)
 
 ## Amsterdam 2020-07-25 18:00:00
 ![Amsterdam](out/Amsterdam_2020-07-25_18_00_00.png)
