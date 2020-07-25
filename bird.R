@@ -28,20 +28,17 @@ Rcpp::cppFunction('
     return DataFrame::create(_["x"]= x, _["y"]= y);
   }
 ')
+args <- commandArgs()
+name <- tail(args, n=1)
 
-# name = "São Paulo"
-name = "Colombo"
-forecast_sp <- owmr::get_forecast(name) %>% owmr::owmr_as_tibble()
+forecast <- owmr::get_forecast(name) %>% owmr::owmr_as_tibble()
 
-a = ((forecast_sp $wind_speed %>% median) * -1) + 2.379
-b = ((forecast_sp $wind_speed %>% max) - (forecast_sp $wind_speed %>% min)) - 2.379
-c = forecast_sp $wind_speed %>% min
-d = ((forecast_sp $wind_speed %>% median) * 1.2938) - 2.2389028
+a = ((forecast $wind_speed %>% median) * -1) + 2.379
+b = ((forecast $wind_speed %>% max) - (forecast $wind_speed %>% min)) - 2.379
+c = forecast $wind_speed %>% min
+d = ((forecast $wind_speed %>% median) * 1.2938) - 2.2389028
 
-str(a)
-str(b)
-str(c)
-str(d)
+str(name, a, b, c, d)
 
 p <- gen_path(10000000, 0, 0, a, b, c, d)
-plot(p, paste(name, forecast_sp $dt_txt[1]))
+plot(p, paste(name, forecast $dt_txt[1]))
