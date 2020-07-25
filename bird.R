@@ -8,7 +8,7 @@ plot <- function(trajectory, name) {
     axis.title = ggplot2::element_blank(),
     axis.text = ggplot2::element_blank())
 
-  str_path <- gsub(" ", "_", paste(iconv(name, from = 'UTF-8', to = 'ASCII//TRANSLIT'), ".png", sep=""))
+  str_path <- gsub(" ", "_", paste("out/", iconv(name, from = 'UTF-8', to = 'ASCII//TRANSLIT'), ".png", sep=""))
   str_path <- gsub(":", "_", gsub("~", "", str_path))
   png(str_path, units="px", width=1600, height=1600, res=200)
   ggplot2::ggplot(trajectory, ggplot2::aes(x, y)) +
@@ -28,6 +28,7 @@ Rcpp::cppFunction('
     return DataFrame::create(_["x"]= x, _["y"]= y);
   }
 ')
+
 args <- commandArgs()
 name <- tail(args, n=1)
 
@@ -37,8 +38,6 @@ a = ((forecast $wind_speed %>% median) * -1) + 2.379
 b = ((forecast $wind_speed %>% max) - (forecast $wind_speed %>% min)) - 2.379
 c = forecast $wind_speed %>% min
 d = ((forecast $wind_speed %>% median) * 1.2938) - 2.2389028
-
-str(name, a, b, c, d)
 
 p <- gen_path(10000000, 0, 0, a, b, c, d)
 plot(p, paste(name, forecast $dt_txt[1]))
