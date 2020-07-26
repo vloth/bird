@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  display: grid;
+  height: 100vh;
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+}
+
+main {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 0.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-content: baseline;
+}
+
+.bird {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.bird .description {
+  background-color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  opacity: 0;
+}
+
+.bird:hover .description {
+  opacity: 1;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+}
+
+.bird img {
+  width: 100%;
+}
+
+footer {
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+}
