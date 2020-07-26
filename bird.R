@@ -1,19 +1,21 @@
 suppressPackageStartupMessages(library(dplyr))
 
-plot <- function(trajectory, name) {
-  canvas = ggplot2::theme(legend.position  = "none",
-    panel.background = ggplot2::element_rect(fill="black"),
-    axis.ticks = ggplot2::element_blank(),
-    panel.grid = ggplot2::element_blank(),
-    axis.title = ggplot2::element_blank(),
-    axis.text = ggplot2::element_blank())
+get_name <- function(basename) {
+  name <- gsub(" ", "_", paste("out/", iconv(basename, from = 'UTF-8', to = 'ASCII//TRANSLIT'), ".png", sep=""))
+  name <- gsub("'", "_", gsub(":", "_", gsub("~", "", name)))
+  return(name)
+}
 
-  str_path <- gsub(" ", "_", paste("out/", iconv(name, from = 'UTF-8', to = 'ASCII//TRANSLIT'), ".png", sep=""))
-  str_path <- gsub("'", "_", gsub(":", "_", gsub("~", "", str_path)))
-  png(str_path, units="px", width=1600, height=1600, res=200)
+plot <- function(trajectory, name, bg, fg) {
+  png(name, units="px", width=1600, height=1600, res=200)
+  
   ggplot2::ggplot(trajectory, ggplot2::aes(x, y)) +
-      ggplot2::geom_point(color="white", shape=46, alpha=.01) +
-   canvas
+      ggplot2::geom_point(color=fg, shape=46, alpha=.01) +
+        cowplot::theme_nothing() + 
+        ggplot2::scale_x_continuous(expand=c(0,0)) +
+        ggplot2::scale_y_continuous(expand=c(0,0)) +
+        ggplot2::labs(x=NULL, y=NULL) +
+        ggplot2::theme(plot.background=ggplot2::element_rect(fill=bg, color=bg))
 }
 
 Rcpp::cppFunction('
@@ -30,14 +32,17 @@ Rcpp::cppFunction('
 ')
 
 args <- commandArgs()
-name <- tail(args, n=1)
+basename <- args[length(args)-2]
+bg <- args[length(args)-1]
+fg <- args[length(args)]
 
-forecast <- owmr::get_forecast(name) %>% owmr::owmr_as_tibble()
+forecast <- owmr::get_forecast(basename) %>% owmr::owmr_as_tibble()
 
 a = ((forecast $wind_speed %>% median) * -1) + 2.379
 b = ((forecast $wind_speed %>% max) - (forecast $wind_speed %>% min)) - 1.1579
 c = forecast $wind_speed %>% min
 d = ((forecast $wind_speed %>% median) * 1.2938) - 2.2389028
 
-p <- gen_path(10000000, 0, 0, a, b, c, d)
-plot(p, paste(name, forecast $dt_txt[1]))
+name <- get_name(paste(basename, forecast $dt_txt[1]))
+path <- gen_path(10000000, 0, 0, a, b, c, d)
+plot(path, name, bg, fg)

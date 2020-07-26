@@ -4,6 +4,7 @@ strange attractors created based on
 ### Setup
 ```
 R
+> install.packages("cowplot")
 > install.packages("ggplot2")
 > install.packages("owmr")
 > install.packages("dplyr")
@@ -11,7 +12,7 @@ R
 cp .Renviron.sample .Renviron
 # Add owm api key
 
-Rscript bird.R "New York"
+Rscript bird.R "New York" black white
 ```
 
 ## São Paulo 2020-07-25 18:00:00
