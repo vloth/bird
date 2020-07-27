@@ -1,11 +1,5 @@
 suppressPackageStartupMessages(library(dplyr))
 
-get_name <- function(basename) {
-  name <- gsub(" ", "_", paste("out/", iconv(basename, from = 'UTF-8', to = 'ASCII//TRANSLIT'), ".png", sep=""))
-  name <- gsub("'", "_", gsub(":", "_", gsub("~", "", name)))
-  return(name)
-}
-
 plot <- function(trajectory, name, bg, fg) {
   png(name, units="px", width=1600, height=1600, res=200)
   
@@ -43,6 +37,6 @@ b = ((forecast $wind_speed %>% max) - (forecast $wind_speed %>% min)) - 1.1579
 c = forecast $wind_speed %>% min
 d = ((forecast $wind_speed %>% median) * 1.2938) - 2.2389028
 
-name <- get_name(paste(basename, forecast $dt_txt[1]))
+name <- paste(paste("out/", basename, sep=""), forecast $dt_txt[1])
 path <- gen_path(10000000, 0, 0, a, b, c, d)
 plot(path, name, bg, fg)
