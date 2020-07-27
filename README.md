@@ -14,3 +14,7 @@ cp .Renviron.sample .Renviron
 
 Rscript bird.R "New York" black white
 ```
+
+![screenshot](docs/site.png)
+
+[click here to see more](https://vloth.github.io/bird/)
