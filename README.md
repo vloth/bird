@@ -1,6 +1,6 @@
 strange attractors created based on 3h wind forecast for a given location
 
-![screenshot](docs/site.png)
+![screenshot](docs/screenshot.png)
 
 [click here to see more](https://vloth.github.io/bird/)
 
