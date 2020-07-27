@@ -1,5 +1,8 @@
-strange attractors created based on 
-3h wind forecast for the given location
+strange attractors created based on 3h wind forecast for a given location
+
+![screenshot](docs/site.png)
+
+[click here to see more](https://vloth.github.io/bird/)
 
 ### Setup
 ```
@@ -15,6 +18,3 @@ cp .Renviron.sample .Renviron
 Rscript bird.R "New York" black white
 ```
 
-![screenshot](docs/site.png)
-
-[click here to see more](https://vloth.github.io/bird/)
