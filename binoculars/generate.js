@@ -52,7 +52,7 @@ async function copyFiles(files) {
   const copies = []
   const thumbs = files.map(x => sharp(`../out/${x}`).resize(480)
      .png({ progressive: true, quality: 45 })
-     .toFile(`build/assets/thumb/${pathfy(x)}`))
+     .toFile(`build/assets/thumb/${pathfy(x)}.png`))
 
   return Promise.all(copies.concat(thumbs))
 }
