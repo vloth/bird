@@ -39,7 +39,7 @@ async function ensureDirExists(dir) {
 async function writeHtmlOut(baseHtml, birds) {
   const birdsHtml = birds.map(bird => `
     <div class='bird'>
-      <img src="assets/thumb/${pathfy(bird)}" alt="" />
+      <img src="assets/thumb/${pathfy(bird)}.png" alt="" />
       <span class='description'>${bird}</span>
     </div>
    `).join('')
