@@ -10,7 +10,7 @@
     "gen": "node generate.js"
   },
   "dependencies": {
-    "sharp": "^0.25.4"
+    "sharp": "^0.34.5"
   },
   "resolutions": {
     "ini": "^1.3.8",
